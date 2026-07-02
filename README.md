@@ -9,10 +9,12 @@ Fail utama projek:
 ## Fungsi Utama
 
 - Rekod kes/prosedur mengikut shift Pagi, Petang, dan Malam.
+- Rekod Zone pesakit: Secondary Triage, Yellow Zone, dan Red Zone.
+- Rekod Registration Number secara optional untuk rujukan pesakit.
 - Pilih prosedur dan tempoh masa seperti 10 minit, 15 minit, 30 minit, 1 jam, dan 2 jam.
 - Simpan data ke Google Sheet rasmi.
-- Papar dashboard harian dengan jumlah kes, pecahan shift, prosedur paling kerap, dan trend 7 hari.
-- Jana ringkasan automatik untuk Daily, Weekly, Monthly, Yearly, DayOfWeekSummary, HourlySummary, dan tab Graf.
+- Papar dashboard harian dengan jumlah pesakit/prosedur mengikut Zone, pecahan shift, prosedur paling kerap, sejarah data, dan trend 7 hari.
+- Jana ringkasan automatik untuk Daily, Weekly, Monthly, Yearly, DayOfWeekSummary, HourlySummary, ZoneSummary, ZoneProcedureSummary, dan tab Graf.
 - Sokong auto refresh graf setiap 5 minit melalui trigger Apps Script.
 
 ## Cara Setup Ringkas
@@ -27,10 +29,39 @@ Fail utama projek:
 
 ## Struktur Data Sheet
 
-Tab data utama menggunakan nama `Sheet1` dengan header berikut:
+Tab data utama menggunakan nama `Sheet1` dengan header asal berikut:
 
 | Timestamp | Date | Time | Shift | Procedure | DurationMinutes |
 | --- | --- | --- | --- | --- | --- |
+
+Versi terkini menggunakan dua lajur tambahan:
+
+| Timestamp | Date | Time | Shift | Zone | RegistrationNumber | Procedure | DurationMinutes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+
+Jika Sheet lama masih menggunakan 6 lajur asal, script akan cuba memasukkan `Zone` dan `RegistrationNumber` sebelum lajur `Procedure` apabila `setupOfficialSheetStructure()` atau akses data dijalankan.
+
+## Zone dan Prosedur
+
+Pilihan Zone:
+
+- Secondary Triage
+- Yellow Zone
+- Red Zone
+
+Prosedur baharu:
+
+- ECG
+- Medication
+- Accompany CT Scan
+- Accompany X-Ray
+- Accompany for Admission
+
+Nota logik:
+
+- ECG dan Medication boleh dipilih di semua Zone.
+- Accompany CT Scan, Accompany X-Ray, dan Accompany for Admission hanya dipaparkan untuk Yellow Zone dan Red Zone.
+- Registration Number optional dan tidak mempengaruhi kiraan prosedur atau graf.
 
 ## Nota Deploy
 
