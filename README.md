@@ -13,7 +13,8 @@ Fail utama projek:
 - Rekod Registration Number secara optional untuk rujukan pesakit.
 - Pilih prosedur dan tempoh masa seperti 10 minit, 15 minit, 30 minit, 1 jam, dan 2 jam.
 - Simpan data ke Google Sheet rasmi.
-- Papar dashboard harian dengan jumlah pesakit/prosedur mengikut Zone, pecahan shift, prosedur paling kerap, sejarah data, dan trend 7 hari.
+- Papar dashboard harian dengan pecahan shift, prosedur paling kerap, dan trend 7 hari.
+- Jana statistik/graf Zone di Google Sheets tanpa memaparkan jumlah Zone atau senarai data harian pada dashboard utama.
 - Jana ringkasan automatik untuk Daily, Weekly, Monthly, Yearly, DayOfWeekSummary, HourlySummary, ZoneSummary, ZoneProcedureSummary, dan tab Graf.
 - Sokong auto refresh graf setiap 5 minit melalui trigger Apps Script.
 
